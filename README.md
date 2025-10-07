@@ -1,23 +1,23 @@
-# 🏪 Inventory Management System
+# 🏪 Hệ thống Quản lý Kho hàng (Inventory Management System)
 
-A comprehensive Spring Boot application for managing inventory, customers, and orders with real-time stock alerts and revenue reporting.
+Một ứng dụng Spring Boot toàn diện để quản lý hàng tồn kho, khách hàng và đơn hàng, với các tính năng cảnh báo tồn kho theo thời gian thực và báo cáo doanh thu.
 
-## ✨ Features
+## ✨ Tính năng
 
-### 🛍️ Product Management
-- Create, read, update, delete products
-- Track inventory levels and low stock alerts
-- Category-based product organization
-- SKU management
-- Price and quantity tracking
+### 🛍️ Quản lý sản phẩm
+- Thêm, xem, sửa, xóa sản phẩm
+- Theo dõi mức tồn kho và cảnh báo khi sắp hết hàng
+- Phân loại sản phẩm theo danh mục
+- Quản lý mã SKU
+- Theo dõi giá và số lượng
 
-### 👥 Customer Management
-- Customer registration and profile management
-- Contact information tracking
-- Customer type classification
-- Order history tracking
+### 👥 Quản lý khách hàng
+- Đăng ký và quản lý hồ sơ khách hàng
+- Theo dõi thông tin liên hệ
+- Phân loại loại khách hàng
+- Theo dõi lịch sử đặt hàng
 
-### 📦 Order Management
+### 📦 Quản lý đơn hàng
 - Create and manage orders
 - Order status tracking (Pending, Confirmed, Processing, Shipped, Delivered, Cancelled)
 - Automatic inventory deduction
