@@ -18,25 +18,25 @@ Một ứng dụng Spring Boot toàn diện để quản lý hàng tồn kho, kh
 - Theo dõi lịch sử đặt hàng
 
 ### 📦 Quản lý đơn hàng
-- Create and manage orders
-- Order status tracking (Pending, Confirmed, Processing, Shipped, Delivered, Cancelled)
-- Automatic inventory deduction
-- Order cancellation with stock restoration
+- Tạo và quản lý đơn hàng
+- Theo dõi trạng thái đơn hàng (Chờ xử lý, Đã xác nhận, Đang xử lý, Đã gửi, Đã giao, Đã hủy)
+- Tự động trừ hàng tồn kho
+- Hủy đơn hàng kèm khôi phục lại số lượng hàng trong kho
 
-### 📊 Reporting & Analytics
-- Revenue reports by date range
-- Order statistics and metrics
-- Low stock product alerts
-- Customer order history
+### 📊 Báo cáo & Phân tích
+- Báo cáo doanh thu theo khoảng thời gian
+- Thống kê và chỉ số đơn hàng
+- Cảnh báo sản phẩm sắp hết hàng
+- Lịch sử đơn hàng của khách hàng
 
-### 🔔 Automated Alerts
-- Scheduled low stock notifications
-- Daily inventory monitoring
-- Configurable alert thresholds
+### 🔔 Cảnh báo tự động
+- Thông báo định kỳ khi hàng tồn thấp
+- Theo dõi hàng tồn kho hàng ngày
+- Cấu hình ngưỡng cảnh báo linh hoạt
 
-## 🏗️ Architecture
+## 🏗️ Kiến trúc hệ thống
 
-### Technology Stack
+### Công nghệ sử dụng
 - **Backend**: Spring Boot 3.2.0
 - **Database**: MySQL 8.0+
 - **ORM**: Spring Data JPA / Hibernate
@@ -45,14 +45,14 @@ Một ứng dụng Spring Boot toàn diện để quản lý hàng tồn kho, kh
 - **Monitoring**: Spring Boot Actuator
 - **Build Tool**: Maven
 
-### Project Structure
+### Cấu trúc dự án
 ```
 src/
 ├── main/
 │   ├── java/com/inventory/
-│   │   ├── config/          # Configuration classes
-│   │   ├── controller/      # REST API controllers
-│   │   ├── dto/            # Data Transfer Objects
+│   │   ├── config/          # Các lớp cấu hình
+│   │   ├── controller/      # Bộ điều khiển REST API
+│   │   ├── dto/            # Đối tượng truyền dữ liệu (DTO)
 │   │   ├── exception/      # Exception handling
 │   │   ├── model/          # JPA entities
 │   │   ├── repository/     # Data access layer
@@ -62,88 +62,88 @@ src/
 │       └── application-dev.properties
 ├── test/                   # Test classes
 └── database/
-    └── setup.sql          # Database initialization script
+    └── setup.sql          # Tập lệnh khởi tạo cơ sở dữ liệu
 ```
 
-## 🚀 Quick Start
+## 🚀 Bắt đầu nhanh
 
-### Prerequisites
+### Yêu cầu
 - Java 17+
 - Maven 3.6+
 - MySQL 8.0+
 
-### Installation
+### Cài đặt
 
-1. **Clone the repository**
+1. **Clone dự án**
    ```bash
    git clone <repository-url>
    cd inventory-management-system
    ```
 
-2. **Setup Database**
+2. **Thiết lập cơ sở dữ liệu**
    ```bash
    mysql -u root -p < database/setup.sql
    ```
 
-3. **Configure Application**
-   Update `src/main/resources/application.properties` with your database credentials:
+3. **Cấu hình ứng dụng**
+   Cập nhật file src/main/resources/application.properties với thông tin của bạn:
    ```properties
    spring.datasource.username=your_username
    spring.datasource.password=your_password
    ```
 
-4. **Run the Application**
+4. **Chạy ứng dụng**
    ```bash
    mvn spring-boot:run
    ```
 
-5. **Access the Application**
-   - API Base URL: `http://localhost:8080`
+5. **Truy cập ứng dụng**
+   - API gốc: `http://localhost:8080`
    - Swagger UI: `http://localhost:8080/swagger-ui.html`
    - Health Check: `http://localhost:8080/actuator/health`
 
 ## 📚 API Documentation
 
-### Core Endpoints
+### Các Endpoint chính
 
-#### Products
-- `GET /api/products` - Get all products (with pagination)
-- `GET /api/products/{id}` - Get product by ID
-- `POST /api/products` - Create new product
-- `PUT /api/products/{id}` - Update product
-- `DELETE /api/products/{id}` - Delete product
-- `GET /api/products/search?name=xxx` - Search products by name
-- `GET /api/products/category/{category}` - Get products by category
-- `GET /api/products/low-stock` - Get low stock products
+#### Sản phẩm
+- `GET /api/products` - Lấy danh sách sản phẩm (hỗ trợ phân trang)
+- `GET /api/products/{id}` - Lấy sản phẩm theo ID
+- `POST /api/products` - Tạo sản phẩm mới
+- `PUT /api/products/{id}` - Cập nhật sản phẩm
+- `DELETE /api/products/{id}` - Xóa sản phẩm
+- `GET /api/products/search?name=xxx` - Tìm sản phẩm theo tên
+- `GET /api/products/category/{category}` - GLấy sản phẩm theo danh mục
+- `GET /api/products/low-stock` - Lấy danh sách sản phẩm sắp hết hàng
 
-#### Customers
-- `GET /api/customers` - Get all customers
-- `GET /api/customers/{id}` - Get customer by ID
-- `POST /api/customers` - Create new customer
-- `PUT /api/customers/{id}` - Update customer
-- `DELETE /api/customers/{id}` - Delete customer
-- `GET /api/customers/search?name=xxx` - Search customers by name
+#### Khách hàng
+- `GET /api/customers` - Lấy danh sách khách hàng
+- `GET /api/customers/{id}` - Lấy khách hàng theo ID
+- `POST /api/customers` - Tạo khách hàng mới
+- `PUT /api/customers/{id}` - Cập nhật khách hàng
+- `DELETE /api/customers/{id}` - Xóa khách hàng
+- `GET /api/customers/search?name=xxx` - Tìm khách hàng theo tên
 
-#### Orders
-- `GET /api/orders` - Get all orders
-- `GET /api/orders/{id}` - Get order by ID
-- `POST /api/orders` - Create new order
-- `PATCH /api/orders/{id}/status?status=xxx` - Update order status
-- `DELETE /api/orders/{id}` - Cancel order
-- `GET /api/orders/customer/{customerId}` - Get orders by customer
+#### Đơn hàng
+- `GET /api/orders` - Lấy danh sách đơn hàng
+- `GET /api/orders/{id}` - Lấy đơn hàng theo ID
+- `POST /api/orders` - Tạo đơn hàng mới
+- `PATCH /api/orders/{id}/status?status=xxx` - Cập nhật trạng thái đơn hàng
+- `DELETE /api/orders/{id}` - Hủy đơn hàng
+- `GET /api/orders/customer/{customerId}` - Lấy đơn hàng của khách hàng
 
-#### Reports
-- `GET /api/reports/revenue?startDate=xxx&endDate=xxx` - Get revenue report
+#### Báo cáo
+- `GET /api/reports/revenue?startDate=xxx&endDate=xxx` - Lấy báo cáo doanh thu
 
-### Pagination Support
-All list endpoints support pagination:
+### Phân trang
+Tất cả các endpoint danh sách đều hỗ trợ phân trang:
 ```
 GET /api/products?page=0&size=10&sort=name,asc
 ```
 
-## 🔧 Configuration
+## 🔧 Cấu hình
 
-### Database Configuration
+### Cơ sở dữ liệu
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/inventory_db
 spring.datasource.username=root
@@ -151,10 +151,10 @@ spring.datasource.password=your_password
 spring.jpa.hibernate.ddl-auto=update
 ```
 
-### Security Configuration
-- All API endpoints are publicly accessible
-- CORS enabled for all origins
-- CSRF protection disabled for API usage
+### Bảo mật
+- Tất cả API đều công khai
+- Cho phép CORS cho mọi nguồn
+- Tắt CSRF cho API
 
 ### Logging Configuration
 ```properties
@@ -162,45 +162,26 @@ logging.level.com.inventory=DEBUG
 logging.level.org.hibernate.SQL=DEBUG
 ```
 
-## 📊 Sample Data
+## 🧪 Kiểm thử
 
-The application comes with sample data including:
-- 8 sample products across different categories
-- 5 sample customers
-- Pre-configured low stock thresholds
+### Kiểm thử thủ công
+Dùng Swagger UI tại http://localhost:8080/swagger-ui.html để thử các API tương tác.
 
-## 🔔 Automated Features
+### Ví dụ gọi API
 
-### Low Stock Alerts
-- Runs daily at 9:00 AM
-- Checks all products for low stock conditions
-- Logs alerts to console (extensible for email/SMS)
-
-### Inventory Management
-- Automatic stock deduction on order creation
-- Stock restoration on order cancellation
-- Real-time inventory tracking
-
-## 🧪 Testing
-
-### Manual Testing
-Use the Swagger UI at `http://localhost:8080/swagger-ui.html` to test all endpoints interactively.
-
-### Sample API Calls
-
-#### Create Product
+#### Tạo sản phẩm
 ```bash
 curl -X POST http://localhost:8080/api/products \
   -H "Content-Type: application/json" \
   -d '{
-    "name": "Test Product",
-    "price": 99.99,
+    "name": "Test san pham",
+    "price": 150,
     "quantity": 100,
     "category": "Test"
   }'
 ```
 
-#### Create Order
+#### Tạo đơn hàng
 ```bash
 curl -X POST http://localhost:8080/api/orders \
   -H "Content-Type: application/json" \
@@ -214,57 +195,5 @@ curl -X POST http://localhost:8080/api/orders \
     ]
   }'
 ```
-
-## 🚀 Deployment
-
-For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
-
-### Quick Deployment
-1. Build the application: `mvn clean package`
-2. Run the JAR: `java -jar target/inventory-management-system-1.0.0.jar`
-3. Access at `http://localhost:8080`
-
-## 🔍 Monitoring
-
-### Health Checks
-- Application health: `GET /actuator/health`
-- Application info: `GET /actuator/info`
-- Metrics: `GET /actuator/metrics`
-
-### Logs
-- Application logs include detailed business logic tracking
-- SQL queries are logged in development mode
-- Error handling with detailed stack traces
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-For support and questions:
-- Check the [API Documentation](http://localhost:8080/swagger-ui.html)
-- Review the [Deployment Guide](DEPLOYMENT.md)
-- Check application logs for error details
-
-## 🎯 Roadmap
-
-- [ ] User authentication and authorization
-- [ ] Email/SMS notifications for low stock
-- [ ] Advanced reporting and analytics
-- [ ] Mobile app integration
-- [ ] Multi-warehouse support
-- [ ] Barcode scanning support
-- [ ] Automated reorder suggestions
-
----
 
 **Built with ❤️ using Spring Boot**
