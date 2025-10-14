@@ -63,7 +63,6 @@ public class Product {
         updatedAt = LocalDateTime.now();
     }
 
-    // ===== Constructors =====
     public Product() {}
 
     public Product(Long id, String name, String sku, String description, BigDecimal price,
@@ -83,7 +82,6 @@ public class Product {
         this.updatedAt = updatedAt;
     }
 
-    // ===== Getter & Setter =====
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -120,12 +118,10 @@ public class Product {
     public LocalDateTime getUpdatedAt() { return updatedAt; }
     public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
 
-    // ===== Helper =====
     public boolean isLowStock() {
         return quantity != null && quantity <= lowStockThreshold;
     }
 
-    // ===== Builder =====
     public static ProductBuilder builder() { return new ProductBuilder(); }
 
     public static class ProductBuilder {

@@ -61,7 +61,6 @@ public class Order {
         PENDING, CONFIRMED, PROCESSING, SHIPPED, DELIVERED, CANCELLED
     }
 
-    // ===== Constructors =====
     public Order() {}
 
     public Order(Long id, String orderNumber, Customer customer, List<OrderItem> orderItems,
@@ -79,7 +78,6 @@ public class Order {
         this.updatedAt = updatedAt;
     }
 
-    // ===== Getter & Setter =====
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -110,7 +108,6 @@ public class Order {
     public LocalDateTime getUpdatedAt() { return updatedAt; }
     public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
 
-    // ===== Helper Methods =====
     public void addOrderItem(OrderItem item) {
         this.orderItems.add(item);
         item.setOrder(this);
@@ -121,7 +118,6 @@ public class Order {
         item.setOrder(null);
     }
 
-    // ===== Builder =====
     public static OrderBuilder builder() { return new OrderBuilder(); }
 
     public static class OrderBuilder {

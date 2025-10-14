@@ -1,11 +1,4 @@
--- Note: On Railway, you are already connected to the provisioned database.
--- Do not attempt to CREATE DATABASE or USE a different database here.
-
--- =============================================
--- Create Tables
--- =============================================
-
--- Products table
+-- BẢNG Products
 CREATE TABLE IF NOT EXISTS products (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(200) NOT NULL,
@@ -25,7 +18,7 @@ CREATE TABLE IF NOT EXISTS products (
     INDEX idx_is_active (is_active)
 );
 
--- Customers table
+-- BẢNG Customers
 CREATE TABLE IF NOT EXISTS customers (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(200) NOT NULL,
@@ -44,7 +37,7 @@ CREATE TABLE IF NOT EXISTS customers (
     INDEX idx_is_active (is_active)
 );
 
--- Orders table
+-- BẢNG Orders
 CREATE TABLE IF NOT EXISTS orders (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     order_number VARCHAR(50) UNIQUE NOT NULL,
@@ -62,7 +55,7 @@ CREATE TABLE IF NOT EXISTS orders (
     INDEX idx_order_date (order_date)
 );
 
--- Order Items table
+-- BẢNG Order Items
 CREATE TABLE IF NOT EXISTS order_items (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     order_id BIGINT NOT NULL,
@@ -76,11 +69,6 @@ CREATE TABLE IF NOT EXISTS order_items (
     INDEX idx_product_id (product_id)
 );
 
--- =============================================
--- Insert Sample Data
--- =============================================
-
--- Insert sample products
 INSERT INTO products (name, sku, description, price, quantity, low_stock_threshold, category, unit, is_active) VALUES
 ('iPhone 15 Pro', 'IPH15PRO', 'Latest iPhone with advanced features', 999.99, 50, 10, 'Electronics', 'piece', TRUE),
 ('Samsung Galaxy S24', 'SGS24', 'Premium Android smartphone', 899.99, 30, 5, 'Electronics', 'piece', TRUE),
@@ -91,7 +79,6 @@ INSERT INTO products (name, sku, description, price, quantity, low_stock_thresho
 ('USB-C Cable', 'USBC1M', '1 meter USB-C charging cable', 19.99, 200, 50, 'Accessories', 'piece', TRUE),
 ('Wireless Charger', 'WCHRG', 'Qi-compatible wireless charger', 39.99, 60, 10, 'Accessories', 'piece', TRUE);
 
--- Insert sample customers
 INSERT INTO customers (name, email, phone, address, city, customer_type, is_active) VALUES
 ('Nguyễn Văn An', 'an.nguyen@email.com', '0123456789', '123 Đường ABC, Quận 1', 'Hồ Chí Minh', 'Individual', TRUE),
 ('Trần Thị Bình', 'binh.tran@email.com', '0987654321', '456 Đường XYZ, Quận 2', 'Hồ Chí Minh', 'Individual', TRUE),
@@ -99,11 +86,7 @@ INSERT INTO customers (name, email, phone, address, city, customer_type, is_acti
 ('Lê Văn Cường', 'cuong.le@email.com', '0369258147', '321 Đường GHI, Quận 4', 'Hồ Chí Minh', 'Individual', TRUE),
 ('Phạm Thị Dung', 'dung.pham@email.com', '0741852963', '654 Đường JKL, Quận 5', 'Hồ Chí Minh', 'Individual', TRUE);
 
--- =============================================
--- Create Views
--- =============================================
-
--- Low stock products view
+-- Chế độ xem sản phẩm sắp hết hàng
 CREATE VIEW low_stock_products AS
 SELECT 
     id,
@@ -116,7 +99,7 @@ SELECT
 FROM products 
 WHERE is_active = TRUE AND quantity <= low_stock_threshold;
 
--- Revenue summary view
+-- Chế độ xem tóm tắt doanh thu
 CREATE VIEW revenue_summary AS
 SELECT 
     DATE(order_date) as order_date,
@@ -128,13 +111,9 @@ WHERE status != 'CANCELLED'
 GROUP BY DATE(order_date)
 ORDER BY order_date DESC;
 
--- =============================================
--- Create Stored Procedures
--- =============================================
-
 DELIMITER //
 
--- Procedure to update product quantity after order
+-- Thủ tục để cập nhật số lượng sản phẩm sau khi đặt hàng
 CREATE PROCEDURE UpdateProductQuantity(IN p_product_id BIGINT, IN p_quantity_change INT)
 BEGIN
     DECLARE current_quantity INT;
@@ -151,7 +130,7 @@ BEGIN
     END IF;
 END //
 
--- Procedure to get low stock alerts
+-- Thủ tục để nhận cảnh báo hàng tồn kho thấp
 CREATE PROCEDURE GetLowStockAlerts()
 BEGIN
     SELECT 
@@ -170,26 +149,10 @@ END //
 
 DELIMITER ;
 
--- =============================================
--- Create Indexes for Performance
--- =============================================
-
--- Additional indexes for better performance
+-- Các chỉ mục bổ sung để cải thiện hiệu suất
 CREATE INDEX idx_products_quantity ON products(quantity);
 CREATE INDEX idx_products_price ON products(price);
 CREATE INDEX idx_orders_total_amount ON orders(total_amount);
 CREATE INDEX idx_order_items_quantity ON order_items(quantity);
-
--- =============================================
--- Grant Permissions (if needed)
--- =============================================
-
--- Uncomment and modify as needed for your environment
--- GRANT ALL PRIVILEGES ON inventory_db.* TO 'inventory_user'@'localhost' IDENTIFIED BY 'inventory_password';
--- FLUSH PRIVILEGES;
-
--- =============================================
--- Database Setup Complete
--- =============================================
 
 SELECT 'Database setup completed successfully!' as status;

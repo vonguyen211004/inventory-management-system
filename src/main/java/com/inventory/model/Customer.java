@@ -52,7 +52,6 @@ public class Customer {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    // ===== Constructor =====
     public Customer() {}
 
     public Customer(Long id, String name, String email, String phone, String address,
@@ -105,7 +104,6 @@ public class Customer {
     public LocalDateTime getUpdatedAt() { return updatedAt; }
     public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
 
-    // ===== Builder manually =====
     public static CustomerBuilder builder() { return new CustomerBuilder(); }
 
     public static class CustomerBuilder {
