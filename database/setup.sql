@@ -1,14 +1,5 @@
--- =============================================
--- Inventory Management System Database Setup
--- =============================================
-
--- Create database
-CREATE DATABASE IF NOT EXISTS inventory_db
-CHARACTER SET utf8mb4
-COLLATE utf8mb4_unicode_ci;
-
--- Use the database
-USE inventory_db;
+-- Note: On Railway, you are already connected to the provisioned database.
+-- Do not attempt to CREATE DATABASE or USE a different database here.
 
 -- =============================================
 -- Create Tables
