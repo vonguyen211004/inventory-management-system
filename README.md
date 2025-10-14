@@ -195,5 +195,3 @@ curl -X POST http://localhost:8080/api/orders \
     ]
   }'
 ```
-
-**Built with ❤️ using Spring Boot**
