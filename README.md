@@ -1,4 +1,4 @@
-# 🏪 Hệ thống Quản lý Kho hàng (Inventory Management System)
+# 🏪 Hệ thống Quản lý Kho hàng nguyenVo (nguyenVo Inventory Management System)
 
 Một ứng dụng Spring Boot toàn diện để quản lý hàng tồn kho, khách hàng và đơn hàng, với các tính năng cảnh báo tồn kho theo thời gian thực và báo cáo doanh thu.
 
