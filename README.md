@@ -40,9 +40,8 @@ Một ứng dụng Spring Boot toàn diện để quản lý hàng tồn kho, kh
 - **Backend**: Spring Boot 3.2.0
 - **Database**: MySQL 8.0+
 - **ORM**: Spring Data JPA / Hibernate
-- **Documentation**: Swagger/OpenAPI 3
+- **Documentation**: Swagger
 - **Security**: Spring Security
-- **Monitoring**: Spring Boot Actuator
 - **Build Tool**: Maven
 
 ### Cấu trúc dự án
